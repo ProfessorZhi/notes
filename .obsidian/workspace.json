@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "widget.md",
+                "file": "软件包一些疑问.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "widget"
+              "title": "软件包一些疑问"
             }
           }
         ]
@@ -187,14 +187,16 @@
   },
   "active": "9680bdd8277c6814",
   "lastOpenFiles": [
-    "软件包一些疑问.md",
-    "widget.md",
-    "软件形态_包_库_框架_依赖_运行时_包管理器_笔记.md",
-    "Playwright 笔记.md",
-    "未命名 1.md",
-    "未命名.md",
-    "创建链接.md",
     "欢迎.md",
+    "软件包一些疑问.md",
+    "未命名.base",
+    "创建链接.md",
+    "未命名 1.base",
+    "未命名 1.md",
+    "软件形态_包_库_框架_依赖_运行时_包管理器_笔记.md",
+    "未命名.md",
+    "widget.md",
+    "Playwright 笔记.md",
     "my"
   ]
 }
