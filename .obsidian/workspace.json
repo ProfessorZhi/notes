@@ -4,21 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "4ecd22150297a763",
+        "id": "6d0afaf598ff50a0",
         "type": "tabs",
         "children": [
           {
-            "id": "9680bdd8277c6814",
+            "id": "215e3dc01615d285",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "bases",
               "state": {
-                "file": "软件包一些疑问.md",
-                "mode": "source",
-                "source": false
+                "file": "未命名 1.base",
+                "viewName": "表格"
               },
-              "icon": "lucide-file",
-              "title": "软件包一些疑问"
+              "icon": "lucide-table",
+              "title": "未命名 1"
             }
           }
         ]
@@ -185,18 +184,43 @@
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "9680bdd8277c6814",
+  "active": "215e3dc01615d285",
   "lastOpenFiles": [
-    "欢迎.md",
-    "软件包一些疑问.md",
     "未命名.base",
-    "创建链接.md",
     "未命名 1.base",
-    "未命名 1.md",
-    "软件形态_包_库_框架_依赖_运行时_包管理器_笔记.md",
-    "未命名.md",
-    "widget.md",
-    "Playwright 笔记.md",
-    "my"
+    "milky_summary/2026-04-01_Obsidian CLI：让 AI 洞察你的知识网络.md",
+    "Lilly",
+    "milky_summary/2026-03-31_Claude Code泄漏51万行代码,AI圈过大年啦！.md",
+    "milky_summary/2026-04-05_test-mail.md",
+    "milky_summary/2026-04-06_Karpathy 的 Obsidian RAG + Claude Code 知识库系统.md",
+    "milky_summary/2026-04-06_Karpathy的Obsidian RAG + Claude Code = 作弊代码.md",
+    "my/widget.md",
+    "milky_summary/2026-04-01_效率X10！我开源了一个OpenClaw的控制中心.md",
+    "milky_summary/2026-04-01_minimax的开源skills极大的借鉴价值.md",
+    "milky_summary/2026-04-01_小白到高手！零基础OpenClaw系统教程：安装、实操、降本、AI团队搭建！.md",
+    "milky_summary/2026-04-01_10个Claude Code 插件让你的项目效率提升10倍.md",
+    "milky_summary/2026-04-01_ExHyperV 1.4.1发布：Hyper-V 终极武器，没有之一！.md",
+    "milky_summary/2026-04-01_claude code开发者亲自发布踩坑经验.md",
+    "milky_summary/2026-04-01_用AI编程手搓了一个工具，一键生成GitHub项目源码全景图！.md",
+    "milky_summary/2026-04-01_AI印钞机2.0，AI自动化搞财产的流水线.md",
+    "milky_summary/2026-04-01_让AI洞察你的知识网络-Obsidian CLI.md",
+    "milky_summary/2026-04-01_我们仍未知道 PostgreSQL 的性能上限【让PostgreSQL再次伟大#01】.md",
+    "milky_summary/2026-04-02_每天认识一个强大的网站【第85期】免费的3D摄像机，随时从各个视角看别人老婆！你会怎么玩儿？.md",
+    "milky_summary/2026-04-03_认真用 Claude Code 的人，迟早会遇见 Everything Claude Code.md",
+    "milky_summary/2026-04-03_对不起，接好飞书MCP之后就是可以为所欲为.md",
+    "milky_summary/2026-04-03_我用 OpenClaw 搭了一支 AI 团队｜这可能是 AI 时代最强的个人外挂.md",
+    "milky_summary/2026-04-04_这5个网站，能让你找到全网优质Claude Code Skill技能！.md",
+    "milky_summary/2026-04-06_分享3个Claude Code必装的Skill技能，用了就离不开！.md",
+    "milky_summary/2026-04-06_Claude Code 必装 Skill 技能分享.md",
+    "milky_summary/2026-04-04_全网优质 Claude Code Skill 技能资源网站推荐.md",
+    "milky_summary/2026-04-03_OpenClaw AI 团队搭建保姆级教程.md",
+    "my/OpenClaw 接入飞书生态的多 Agent 体系设计研究报告.pdf",
+    "milky_summary/gmail/vivian/2026-04-06",
+    "my/llm.pdf",
+    "my/feishu-agent设计.pdf",
+    "my/CLI、插件与 MCP 的本质与选型.pdf",
+    "milky_summary/gmail/vivian/2026-04-05",
+    "milky_summary/gmail/vivian",
+    "milky_summary/gmail"
   ]
 }
