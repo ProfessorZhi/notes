@@ -13,11 +13,11 @@
             "state": {
               "type": "bases",
               "state": {
-                "file": "未命名 1.base",
+                "file": "未命名.base",
                 "viewName": "表格"
               },
               "icon": "lucide-table",
-              "title": "未命名 1"
+              "title": "未命名"
             }
           }
         ]
@@ -186,8 +186,8 @@
   },
   "active": "215e3dc01615d285",
   "lastOpenFiles": [
-    "未命名.base",
     "未命名 1.base",
+    "未命名.base",
     "milky_summary/2026-04-01_Obsidian CLI：让 AI 洞察你的知识网络.md",
     "Lilly",
     "milky_summary/2026-03-31_Claude Code泄漏51万行代码,AI圈过大年啦！.md",
