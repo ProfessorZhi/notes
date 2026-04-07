@@ -108,3 +108,143 @@ interface AgentDefinition {
 - [ ] Coordinator Worker 通信协议
 - [ ] 权限系统（permission mode）
 - [ ] Memory / sessionHistory 机制
+
+---
+
+## 深度分析：Coordinator 模式
+
+### Coordinator System Prompt（核心摘录）
+
+`src/coordinator/coordinatorMode.ts` 里的 `getCoordinatorSystemPrompt()` 是整个多 agent 编排的核心。Coordinator 被定义为一个**真正的协调者**，不是执行者：
+
+**核心职责分层**：
+1. **Research**：Workers 并行研究
+2. **Synthesis**：Coordinator 本人读取结果，理解问题，写实现规范
+3. **Implementation**：Workers 按规范执行
+4. **Verification**：Workers 独立验证
+
+**并行是核心能力**：
+- 只读任务（research）自由并行
+- 写任务（implementation）每次一个
+- Verification 可以和 implementation 在不同文件区域并行
+
+**Continue vs Spawn 的判断矩阵**：
+
+| 情况 | 机制 | 原因 |
+|------|------|------|
+| 研究刚好覆盖要改的文件 | **Continue** | Worker 已有文件上下文 + 清晰计划 |
+| 研究广但实现窄 | **Spawn fresh** | 避免引入探索噪声 |
+| 纠正失败 | **Continue** | Worker 有错误上下文 |
+| 验证其他 Worker 刚写的代码 | **Spawn fresh** | 验证者应该用全新视角 |
+| 第一次尝试方向完全错误 | **Spawn fresh** | 错误上下文会污染重试 |
+
+**最重要的规则**：Coordinator 必须自己先理解研究结果，才能写出好的实现规范。永远不要写"基于你的发现"这种话——要自己综合后给出具体的文件路径、行号和改动描述。
+
+---
+
+## 深度分析：Fork Subagent 机制
+
+`tools/AgentTool/forkSubagent.ts` 实现了一种隐式 fork：
+
+**触发条件**：不传 `subagent_type` 时触发 fork 实验
+
+**关键设计**：
+- Fork child 继承父 agent 的**完整对话上下文**
+- 所有 fork child 的 API 请求前缀是**字节级相同**的（用于 prompt cache 共享）
+- 方法：收集父 assistant message 的所有 tool_use blocks，用相同的占位符文本构建 tool_result blocks，然后附加每个 child 独有的 directive text block
+- `FORK_PLACEHOLDER_RESULT = 'Fork started — processing in background'` 所有 child 一致
+
+**禁止递归**：通过检测消息中的 `<FORK_BOILERPLATE_TAG>` 防止递归 fork
+
+---
+
+## 深度分析：Agent 生命周期与内存管理
+
+`tasks/LocalAgentTask/LocalAgentTask.tsx` 中的 `LocalAgentTaskState` 暴露了几个关键设计：
+
+**状态字段**：
+```typescript
+type LocalAgentTaskState = {
+  type: 'local_agent'
+  agentId: string
+  prompt: string
+  selectedAgent?: AgentDefinition
+  agentType: string
+  isBackgrounded: boolean        // 是否后台运行
+  pendingMessages: string[]       // SendMessage 队列
+  retain: boolean                // UI 持有标记
+  diskLoaded: boolean            // 是否已从磁盘加载侧链
+  messages?: Message[]           // 完整消息历史
+}
+```
+
+**内存清理（runAgent.ts finally 块）**：
+- 清理 agent 专用的 MCP servers
+- 清理 session hooks
+- 清理 prompt cache tracking
+- 释放克隆的 file state cache
+- 释放 fork context messages
+- 从 perfetto 注册表移除
+- 从 todos AppState 移除（防止泄漏：每个 subagent 调用 TodoWrite 都会留下 key）
+- Kill 所有该 agent 启动的后台 bash 任务（防止 zombie 进程）
+- Kill 所有该 agent 的 monitor 任务
+
+---
+
+## Feature Flag 系统
+
+广泛使用 `feature('FLAG_NAME')` 做条件编译DCE：
+
+```typescript
+// Coordinator Mode
+if (feature('COORDINATOR_MODE')) {
+  return isEnvTruthy(process.env.CLAUDE_CODE_COORDINATOR_MODE)
+}
+
+// Fork Subagent（与 Coordinator 互斥）
+if (feature('FORK_SUBAGENT')) {
+  if (isCoordinatorMode()) return false
+  return true
+}
+
+// 条件工具
+const cronTools = feature('AGENT_TRIGGERS')
+  ? [CronCreateTool, CronDeleteTool, CronListTool]
+  : []
+
+// 条件模块
+const coordinatorModeModule = feature('COORDINATOR_MODE')
+  ? require('./coordinator/coordinatorMode.js')
+  : null
+```
+
+环境变量 + GrowthBook 双通道控制，支持 session 级动态切换。
+
+---
+
+## MCP 集成
+
+每个 agent 可以定义自己的 MCP servers（加到父级的 MCP clients 上）：
+
+```typescript
+async function initializeAgentMcpServers(
+  agentDefinition: AgentDefinition,
+  parentClients: MCPServerConnection[],
+): Promise<{
+  clients: MCPServerConnection[]
+  tools: Tools
+  mcpCleanup: () => Promise<void>  // agent 结束时清理
+}>
+```
+
+---
+
+## 与 OpenClaw 的关键差异
+
+| 维度 | Claude Code | OpenClaw |
+|------|------------|----------|
+| **编排模式** | Coordinator 大循环 + Workers 并行 | 多 bot 分派 + 主管收口 |
+| **Continue 语义** | 同一 worker 继续，有完整上下文 | 改派/返工，原 bot 或换 bot |
+| **任务标识** | 完整状态机 + 磁盘输出 | 轻量任务记录 |
+| **内存管理** | AppState todos 清理 + zombie kill | workspace 隔离 |
+| **Feature Flag** | 编译期 DCE + session 动态切换 | 配置驱动 |
