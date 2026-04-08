@@ -1,5 +1,6 @@
 [
   "obsidian-importer",
   "github-sync",
-  "obsidian-local-rest-api"
+  "obsidian-local-rest-api",
+  "templater-obsidian"
 ]
