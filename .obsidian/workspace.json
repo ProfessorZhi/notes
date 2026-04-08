@@ -11,14 +11,13 @@
             "id": "215e3dc01615d285",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "bases",
               "state": {
-                "file": "Lilly/2026-04-07_China区模型供应商-2026-04-07.md",
-                "mode": "source",
-                "source": false
+                "file": "未命名.base",
+                "viewName": "表格"
               },
-              "icon": "lucide-file",
-              "title": "2026-04-07_China区模型供应商-2026-04-07"
+              "icon": "lucide-table",
+              "title": "未命名"
             }
           }
         ]
@@ -186,15 +185,17 @@
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "2936c037ea17080f",
+  "active": "215e3dc01615d285",
   "lastOpenFiles": [
+    "Lilly/2026-04-08_Claude-Code-MCP集成架构-2026-04-08.md",
+    "Vivian/milky_summary/2026-04-08_花一天整理了 140 个 skill 开始享受 AI 复利.md",
+    "plugin/00-已装插件总览.md",
     "plugin/04-Local REST API 上手教程.md",
     "plugin/03-Importer 上手教程.md",
     "plugin/02-GitHub Sync 上手教程.md",
     "plugin/01-Templater 上手教程.md",
-    "plugin/00-已装插件总览.md",
-    "plugin/未命名.md",
     "Lilly/2026-04-07_China区模型供应商-2026-04-07.md",
+    "plugin/未命名.md",
     "plugin",
     "Vivian/milky_summary/2026-04-08_前后端都可看的Agent开发学习路线.md",
     "Vivian/milky_summary/2026-04-08_全球第一个评估skills榜单 到底提升有多少__19d6ad3b.md",
@@ -213,8 +214,6 @@
     "Vivian/milky_summary/2026-04-08_协调cli团队来完成任务.md",
     "Lilly/2026-04-08_Claude-Code工具安全模型-2026-04-08.md",
     "Vivian/milky_summary/2026-04-08_亲测有效 一个Skill让Claude秒变产品经理__19d68c00.md",
-    "Vivian/milky_summary/2026-04-08_开源 Agentic RAG项目实战.md",
-    "Lilly/2026-04-08_OpenClaw上下文管理-2026-04-08.md",
     "Lilly/_archive",
     "未命名.canvas",
     "Vivian/2331149354@qq.com",
