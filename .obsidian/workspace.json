@@ -11,13 +11,14 @@
             "id": "215e3dc01615d285",
             "type": "leaf",
             "state": {
-              "type": "bases",
+              "type": "markdown",
               "state": {
-                "file": "未命名.base",
-                "viewName": "表格"
+                "file": "Vivian/milky_summary/2026-04-08_LangChain 创始人 代码变廉价之后 产研核心竞争力彻底变了.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-table",
-              "title": "未命名"
+              "icon": "lucide-file",
+              "title": "2026-04-08_LangChain 创始人 代码变廉价之后 产研核心竞争力彻底变了"
             }
           }
         ]
@@ -187,6 +188,10 @@
   },
   "active": "215e3dc01615d285",
   "lastOpenFiles": [
+    "Lilly/2026-04-08_OpenClaw系统提示词构造-2026-04-08.md",
+    "Vivian/2331149354@qq.com/2026-04-07_你好__19d66657.md",
+    "Vivian/2331149354@qq.com/2026-04-07_测试__19d67424.md",
+    "未命名.base",
     "Lilly/2026-04-08_Claude-Code-MCP集成架构-2026-04-08.md",
     "Vivian/milky_summary/2026-04-08_花一天整理了 140 个 skill 开始享受 AI 复利.md",
     "plugin/00-已装插件总览.md",
@@ -211,13 +216,9 @@
     "Vivian/milky_summary/2026-04-08_协调cli团队来完成任务__19d6ab24.md",
     "Vivian/milky_summary/2026-04-08_claudeteam团队创建的skills.md",
     "Vivian/milky_summary/2026-04-08_开源 Agentic RAG项目实战__19d69137.md",
-    "Vivian/milky_summary/2026-04-08_协调cli团队来完成任务.md",
-    "Lilly/2026-04-08_Claude-Code工具安全模型-2026-04-08.md",
-    "Vivian/milky_summary/2026-04-08_亲测有效 一个Skill让Claude秒变产品经理__19d68c00.md",
     "Lilly/_archive",
     "未命名.canvas",
     "Vivian/2331149354@qq.com",
-    "未命名.base",
     "Vivian/milky_summary",
     "Vivian",
     "~$执行摘要.docx",
