@@ -40,7 +40,7 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "byModifiedTimeReverse",
+                "sortOrder": "alphabetical",
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
@@ -185,7 +185,7 @@
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "215e3dc01615d285",
+  "active": "2936c037ea17080f",
   "lastOpenFiles": [
     "Vivian/milky_summary/2026-04-08_可直接复用的AI角色库 搭建一个专属团队__19d6ac9f.md",
     "Vivian/milky_summary/2026-04-08_全球第一个评估skills榜单 到底提升有多少.md",
