@@ -1,7 +1,16 @@
 ---
 source: nowcoder
 url: https://www.nowcoder.com/discuss/869896202492379136?sourceSSR=users
+author: 
+published: 
 fetched_at: 2026-04-08T16:16:03
+tags:
+  - nowcoder
+  - huahai
+  - agent
+  - java
+  - python
+summary: "作者：程序员花海"
 ---
 
 # Agent开发，我学过Java后端还需要再学Python吗？

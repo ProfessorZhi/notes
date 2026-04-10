@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "6d0afaf598ff50a0",
+        "id": "02f51d596306b087",
         "type": "tabs",
         "children": [
           {
-            "id": "215e3dc01615d285",
+            "id": "5b05b43c5ab5b186",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "my/za/软件包一些疑问.md",
+                "file": "my/Basics/3_git_commands_cn.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "软件包一些疑问"
+              "title": "3_git_commands_cn"
             }
           }
         ]
@@ -186,8 +186,32 @@
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "2936c037ea17080f",
+  "active": "5b05b43c5ab5b186",
   "lastOpenFiles": [
+    "Vivian/milky_summary/2026-04-10_新手必学功能 powerup 让AI教你用AI 人工智能 大模型 AI工具 claudecode 姜学长.md",
+    "my/Basics/2_linux_commands_cn.md",
+    "my/Basics/1_claude_code_commands_cn.md",
+    "my/Basics/3_git_commands_cn.md",
+    "my/Basics/3_git_commands_cn.docx",
+    "my/Basics/2_linux_commands_cn.docx",
+    "my/Basics/1_claude_code_commands_cn.docx",
+    "my/Basics",
+    "onboard/Java/java_onboard_system_prompt.md",
+    "onboard/Onboard Anything prompt.md",
+    "onboard/Java/java_backend_course_urls.md",
+    "onboard/Java/java_backend_knowledge_framework_onboard.md",
+    "onboard/Java/java_backend_source_titles_and_chapters.md",
+    "onboard/Java/java_backend_onboard_workspace.md",
+    "onboard/Java/java_backend_research_prompt.md",
+    "onboard/Java/Java framework.pdf",
+    "onboard/Java/Java framework.md",
+    "onboard/Java/javase_heima_original_directory.md",
+    "onboard/Java/onboard java prompt.md",
+    "onboard/Java/javase_heima_framework.md",
+    "未命名.base",
+    "my/za/软件包一些疑问.md",
+    "onboard/Java",
+    "onboard",
     "my/huahai/3个月抢救版Java春招后端学习路线！.md",
     "my/huahai/26年全网最全Agent学习路线，拿走不谢！.md",
     "my/huahai/Agent开发，我学过Java后端还需要再学Python吗？.md",
@@ -198,32 +222,8 @@
     "my/huahai/26     Agent.md",
     "my/huahai/Agent      Java       Python.md",
     "my/huahai/Agent       80    Agent.md",
-    "my/huahai/Agent.md",
-    "my/huahai/3 Java.md",
-    "my/huahai/26 Agent.md",
-    "my/huahai/Agent Java Python.md",
-    "my/huahai/Agent 80 Agent.md",
-    "my/huahai/2025-11-30 17 22.md",
-    "my/huahai/03-21 10 53.md",
-    "my/huahai/04-04 10 56.md",
-    "my/huahai/03-28 11 53.md",
-    "my/huahai/03-17 08 58.md",
-    "my/huahai/01-31 19 14.md",
     "my/huahai",
-    "未命名.base",
     "my/za",
-    "Vivian/milky_summary/2026-04-08_可直接复用的AI角色库 搭建一个专属团队.md",
-    "Vivian/fromleetcode/2026-04-08_算法的本质.md",
-    "Vivian/fromleetcode",
-    "Vivian/2331149354@qq.com/2026-04-08_测试 3.md",
-    "Vivian/2331149354@qq.com/2026-04-08_测试 2.md",
-    "Vivian/milky_summary/2026-04-08_开源 Agentic RAG项目实战.md",
-    "plugin",
-    "Lilly/_archive",
-    "未命名.canvas",
-    "Vivian/2331149354@qq.com",
-    "Vivian/milky_summary",
-    "Vivian",
-    "~$执行摘要.docx"
+    "未命名.canvas"
   ]
 }

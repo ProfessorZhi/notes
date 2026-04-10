@@ -1,7 +1,16 @@
 ---
 source: nowcoder
 url: https://www.nowcoder.com/discuss/867373725035872256?sourceSSR=users
+author: 
+published: 
 fetched_at: 2026-04-08T16:16:03
+tags:
+  - nowcoder
+  - huahai
+  - agent
+  - java
+  - python
+summary: "作者：程序员花海"
 ---
 
 # 都在找Agent开发，我整理了80道相关的Agent开发面试题。

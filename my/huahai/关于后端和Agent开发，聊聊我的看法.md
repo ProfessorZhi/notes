@@ -1,7 +1,16 @@
 ---
 source: nowcoder
 url: https://www.nowcoder.com/discuss/863343452015112192
+author: 
+published: 
 fetched_at: 2026-04-08T16:16:03
+tags:
+  - nowcoder
+  - huahai
+  - agent
+  - java
+  - python
+summary: "作者：程序员花海"
 ---
 
 # 关于后端和Agent开发，聊聊我的看法

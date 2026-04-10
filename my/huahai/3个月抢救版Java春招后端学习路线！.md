@@ -1,7 +1,14 @@
 ---
 source: nowcoder
 url: https://www.nowcoder.com/discuss/824693499982315520?sourceSSR=users
+author: 
+published: 
 fetched_at: 2026-04-08T16:16:04
+tags:
+  - nowcoder
+  - huahai
+  - java
+summary: "作者：程序员花海"
 ---
 
 # 3个月抢救版Java春招后端学习路线！

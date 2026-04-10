@@ -1,7 +1,15 @@
 ---
 source: nowcoder
 url: https://www.nowcoder.com/discuss/864821937527128064?sourceSSR=users
+author: 
+published: 
 fetched_at: 2026-04-08T16:16:03
+tags:
+  - nowcoder
+  - huahai
+  - agent
+  - java
+summary: "作者：程序员花海"
 ---
 
 # 26年全网最全Agent学习路线，拿走不谢！

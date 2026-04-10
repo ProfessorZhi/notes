@@ -56577,11 +56577,21 @@ var require_patch = __commonJS({
       if (hadTrailingBlankLine && typeof content === "string" && !content.endsWith(lineEnding + lineEnding)) {
         content = content.endsWith(lineEnding) ? content + lineEnding : content + lineEnding + lineEnding;
       }
-      return [
-        instruction.trimTargetWhitespace ? document2.slice(0, target.content.end).trimEnd() : document2.slice(0, target.content.end),
-        content,
-        suffix
-      ].join("");
+      if (instruction.trimTargetWhitespace) {
+        return [
+          document2.slice(0, target.content.end).trimEnd(),
+          content,
+          suffix
+        ].join("");
+      }
+      let insertionEnd = target.content.end;
+      if (suffix.length === 0) {
+        const doubleEnding = lineEnding + lineEnding;
+        while (insertionEnd >= lineEnding.length * 2 && document2.slice(insertionEnd - lineEnding.length * 2, insertionEnd) === doubleEnding) {
+          insertionEnd -= lineEnding.length;
+        }
+      }
+      return [document2.slice(0, insertionEnd), content, suffix].join("");
     };
     var TablePartsNotFound = class extends Error {
     };
@@ -56923,7 +56933,7 @@ var import_response_time = __toModule(require_response_time());
 var import_query_string = __toModule(require_query_string());
 var import_glob_to_regexp = __toModule(require_glob_to_regexp());
 var import_path = __toModule(require("path"));
-var import_markdown_patch = __toModule(require_dist2());
+var import_markdown_patch2 = __toModule(require_dist2());
 
 // src/types.ts
 var ErrorCode;
@@ -57071,6 +57081,18 @@ var DefaultBindingHost = "127.0.0.1";
 var LicenseUrl = "https://raw.githubusercontent.com/coddingtonbear/obsidian-local-rest-api/main/LICENSE";
 var MaximumRequestSize = "1024mb";
 
+// src/typeGuards.ts
+var import_markdown_patch = __toModule(require_dist2());
+function isPatchOperation(value) {
+  return value === "replace" || value === "prepend" || value === "append";
+}
+function isPatchTargetType(value) {
+  return value === "heading" || value === "block" || value === "frontmatter";
+}
+function isContentType(value) {
+  return Object.values(import_markdown_patch.ContentType).includes(value);
+}
+
 // src/api.ts
 var LocalRestApiPublicApi = class {
   constructor(router, onUnregister) {
@@ -57171,7 +57193,7 @@ var RequestHandler = class {
   getDocumentMapObject(file) {
     return __async(this, null, function* () {
       const content = yield this.app.vault.adapter.read(file.path);
-      const documentMap = (0, import_markdown_patch.getDocumentMap)(content);
+      const documentMap = (0, import_markdown_patch2.getDocumentMap)(content);
       return {
         headings: Object.keys(documentMap.heading).filter((h) => h).map((h) => h.split("").join("::")),
         blocks: Object.keys(documentMap.block),
@@ -57317,7 +57339,7 @@ var RequestHandler = class {
             }))
           ];
           files.sort();
-          if (files.length === 0) {
+          if (files.length === 0 && normalizedPath) {
             this.returnCannedResponse(res, { statusCode: 404 });
             return;
           }
@@ -57380,7 +57402,7 @@ var RequestHandler = class {
           return;
         }
         const fileContent = Buffer.from(content).toString("utf-8");
-        const documentMap = (0, import_markdown_patch.getDocumentMap)(fileContent);
+        const documentMap = (0, import_markdown_patch2.getDocumentMap)(fileContent);
         const targetDelimiter = req.get("Target-Delimiter") || "::";
         if (targetType === "frontmatter") {
           const value = documentMap.frontmatter[rawTarget];
@@ -57617,7 +57639,7 @@ var RequestHandler = class {
         });
         return;
       }
-      if (!["heading", "block", "frontmatter"].includes(targetType)) {
+      if (!isPatchTargetType(targetType)) {
         this.returnCannedResponse(res, {
           errorCode: ErrorCode.InvalidTargetTypeHeader
         });
@@ -57629,9 +57651,15 @@ var RequestHandler = class {
         });
         return;
       }
-      if (!["append", "prepend", "replace"].includes(operation)) {
+      if (!isPatchOperation(operation)) {
         this.returnCannedResponse(res, {
           errorCode: ErrorCode.InvalidOperation
+        });
+        return;
+      }
+      if (!isContentType(contentType)) {
+        this.returnCannedResponse(res, {
+          errorCode: ErrorCode.InvalidContentType
         });
         return;
       }
@@ -57652,11 +57680,11 @@ var RequestHandler = class {
         createTargetIfMissing
       };
       try {
-        const patched = (0, import_markdown_patch.applyPatch)(fileContents, instruction);
+        const patched = (0, import_markdown_patch2.applyPatch)(fileContents, instruction);
         yield this.app.vault.adapter.write(path2, patched);
         res.status(200).send(patched);
       } catch (e) {
-        if (e instanceof import_markdown_patch.PatchFailed) {
+        if (e instanceof import_markdown_patch2.PatchFailed) {
           this.returnCannedResponse(res, {
             errorCode: ErrorCode.PatchFailed,
             message: e.reason
@@ -57698,9 +57726,15 @@ var RequestHandler = class {
       const applyIfContentPreexists = req.get("Apply-If-Content-Preexists") == "true";
       const trimTargetWhitespace = req.get("Trim-Target-Whitespace") == "true";
       const targetDelimiter = req.get("Target-Delimiter") || "::";
-      if (!["heading", "block", "frontmatter"].includes(targetType)) {
+      if (!isPatchTargetType(targetType)) {
         this.returnCannedResponse(res, {
           errorCode: ErrorCode.InvalidTargetTypeHeader
+        });
+        return;
+      }
+      if (!isContentType(contentType)) {
+        this.returnCannedResponse(res, {
+          errorCode: ErrorCode.InvalidContentType
         });
         return;
       }
@@ -57728,11 +57762,11 @@ var RequestHandler = class {
         createTargetIfMissing
       };
       try {
-        const patched = (0, import_markdown_patch.applyPatch)(fileContents, instruction);
+        const patched = (0, import_markdown_patch2.applyPatch)(fileContents, instruction);
         yield this.app.vault.adapter.write(filePath, patched);
         res.status(200).send(patched);
       } catch (e) {
-        if (e instanceof import_markdown_patch.PatchFailed) {
+        if (e instanceof import_markdown_patch2.PatchFailed) {
           this.returnCannedResponse(res, {
             errorCode: ErrorCode.PatchFailed,
             message: e.reason
